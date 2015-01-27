@@ -1,1 +1,29 @@
-<a href="/auth/ldsconnect">Login with LDS Connect</a>
+<button id="open-login" type="button" class="btn">Login with LDS Connect</button>
+<pre>
+  <code id="profile">
+  </code>
+</pre>
+<script>
+  $(function () {
+    $('#profile').hide();
+    $('#open-login').click('body', function () {
+      window.completeLogin = function (name, href) {
+        //window.alert('Completed ' + name + ': ' + href);
+        $.getJSON('/account.json').then(function (data) {
+          $('#profile').html(JSON.stringify(data, null, '  '));
+          $('#profile').fadeIn();
+        });
+      };
+
+      // opening a completely new window, seems easiest
+      window.open('/auth/ldsconnect');
+      // alternate method <iframe src="frame.htm" allowtransparency="true">
+    });
+
+    /*
+    $('body').on('click', '#open-login', function () {
+      window.alert('yuck');
+    });
+    */
+  });
+</script>

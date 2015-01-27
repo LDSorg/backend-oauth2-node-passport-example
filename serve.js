@@ -26,13 +26,13 @@ checkip.getExternalIp().then(function (ip) {
     server.listen(port, function () {
       port = server.address().port;
       console.log('Listening on https://127.0.0.1:' + port);
-      console.log('Listening on https://local.foobar3000.com:' + port);
+      console.log('Listening on https://local.ldsconnect.org:' + port);
       if (ip) {
         console.log('Listening on https://' + ip + ':' + port);
       }
     });
   }
 
-  var app = require('./app').create(server, ip);
+  var app = require('./app').create(server, ip || 'local.ldsconnect.org', port);
   listen(app);
 });
