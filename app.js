@@ -75,7 +75,6 @@ function create(server, host, port) {
   // persistent login sessions (recommended).
   app.use(passport.initialize());
   app.use(passport.session());
-  //app.use(express.static(__dirname + '/public'));
 
   /*
   app.get('/', function (req, res) {

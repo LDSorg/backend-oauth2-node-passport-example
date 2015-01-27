@@ -8,6 +8,7 @@ $(function () {
       }
 
       $('.js-login').hide();
+      $('.js-logout').show();
       $('.js-login-dialog').modal('hide');
       $('.js-profile').html(JSON.stringify(data, null, '  '));
       $('.js-profile-container').fadeIn();
@@ -40,6 +41,7 @@ $(function () {
   });
 
   function init() {
+    $('.js-logout').hide();
     $('img.js-headshot').hide();
     $('.js-profile-container').hide();
 
