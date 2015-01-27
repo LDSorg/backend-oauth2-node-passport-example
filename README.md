@@ -16,6 +16,8 @@ You can start working with test user data immediately.
 git clone git@github.com:LDSorg/passport-lds-connect-example.git
 
 pushd passport-lds-connect-example
+git submodule init
+git submodule update
 
 npm install
 
