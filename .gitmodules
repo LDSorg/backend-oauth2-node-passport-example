@@ -1,0 +1,4 @@
+[submodule "oauth2-jquery"]
+	path = public
+	#url = git@github.com:LDSorg/oauth2-jquery.git
+  url = https://github.com/LDSorg/oauth2-jquery.git

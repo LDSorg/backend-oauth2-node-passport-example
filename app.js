@@ -89,7 +89,7 @@ function create(server, host, port) {
   //   login page.
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
-    res.redirect('/login');
+    res.send({ error: { message: "no session. please login" } });
   }
   app.get('/account.json', ensureAuthenticated, function (req, res) {
     res.send({ user: req.user && req.user.profile });
@@ -114,9 +114,8 @@ function create(server, host, port) {
   //   login page.  Otherwise, the primary route function function will be called,
   //   which, in this example, will redirect the user to the home page.
   app.get('/auth/ldsconnect/callback', 
-    passport.authenticate('lds-strategy-1', { failureRedirect: '/login' }),
+    passport.authenticate('lds-strategy-1'/*, { failureRedirect: '/login' }*/),
     function (req, res, next) {
-      
       req.url = '/oauth-close.html';
       next();
       //res.redirect('/');
