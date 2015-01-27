@@ -1,5 +1,4 @@
 var express = require('express')
-  , expressLayouts = require('express-ejs-layouts')
   , passport = require('passport')
   , LdsConnectStrategy = require('passport-lds-connect').Strategy
   //, logger = require('morgan')
@@ -64,10 +63,8 @@ function create(server, host, port) {
   var app = express();
 
   // configure Express
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'ejs');
-  app.set('layout', 'layout');
-  app.use(expressLayouts);
+  //app.set('views', __dirname + '/views');
+  //app.set('view engine', 'jade');
   //app.use(logger());
   app.use(cookieParser());
   app.use(bodyParser.json({ limit: 10 * 1024 * 1024 }));
@@ -80,9 +77,11 @@ function create(server, host, port) {
   app.use(passport.session());
   //app.use(express.static(__dirname + '/public'));
 
+  /*
   app.get('/', function (req, res) {
     res.render('index', { user: req.user && req.user.profile });
   });
+  */
 
   // Simple route middleware to ensure user is authenticated.
   //   Use this route middleware on any resource that needs to be protected.  If
@@ -93,15 +92,8 @@ function create(server, host, port) {
     if (req.isAuthenticated()) { return next(); }
     res.redirect('/login');
   }
-  app.get('/account', ensureAuthenticated, function (req, res) {
-    res.render('account', { user: req.user && req.user.profile });
-  });
   app.get('/account.json', ensureAuthenticated, function (req, res) {
     res.send({ user: req.user && req.user.profile });
-  });
-
-  app.get('/login', function (req, res) {
-    res.render('login', { user: req.user && req.user.profile });
   });
 
   // GET /auth/ldsconnect

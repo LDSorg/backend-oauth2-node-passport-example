@@ -14,13 +14,13 @@
 
   setTimeout(function () {
     window.opener.completeLogin(name, window.location.href);
-  }, 400);
+  }, 100);
 
   // iOS Webview (namely Chrome) workaround
   setTimeout(function () {
     window.open('', '_self', '');
     window.close();
-  }, 800);
+  }, 300);
 
   localStorage.setItem(name + 'Status', window.location.href);
 </script>
