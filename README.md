@@ -22,7 +22,7 @@ npm install
 node ./serve.js
 ```
 
-The development test keys are already installed. Once you've fired up the server navigate to <https://local.foobar3000.com:8043>.
+The development test keys are already installed. Once you've fired up the server navigate to <https://local.ldsconnect.org:8043>.
 
 **Note**:
 It's important that you use `local.foobar3000.com` rather than `localhost`
