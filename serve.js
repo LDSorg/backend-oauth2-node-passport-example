@@ -9,11 +9,14 @@ var https = require('https')
   , server
   , options
   , certsPath = path.join(__dirname, 'certs', 'server')
+  , caCertsPath = path.join(__dirname, 'certs', 'ca')
   ;
 
 options = {
   key: fs.readFileSync(path.join(certsPath, 'my-server.key.pem'))
-, ca: [ fs.readFileSync(path.join(certsPath, 'my-root-ca.crt.pem'))]
+, ca: [
+    fs.readFileSync(path.join(caCertsPath, 'intermediate.crt.pem'))
+  ]
 , cert: fs.readFileSync(path.join(certsPath, 'my-server.crt.pem'))
 , requestCert: false
 , rejectUnauthorized: true
