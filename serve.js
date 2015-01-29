@@ -10,6 +10,7 @@ var https = require('https')
   , options
   , certsPath = path.join(__dirname, 'certs', 'server')
   , caCertsPath = path.join(__dirname, 'certs', 'ca')
+  , publicDir = process.argv[3] || (__dirname + '/public')
   ;
 
 options = {
@@ -36,6 +37,9 @@ checkip.getExternalIp().then(function (ip) {
     });
   }
 
-  var app = require('./app').create(server, ip || 'local.ldsconnect.org', port);
+  var host = ip || 'local.ldsconnect.org'
+    , app = require('./app')
+        .create(server, host, port, publicDir)
+    ;
   listen(app);
 });
