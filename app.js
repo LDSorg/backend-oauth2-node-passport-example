@@ -1,5 +1,8 @@
+'use strict';
+
 var express = require('express')
   , passport = require('passport')
+  , path = require('path')
   , LdsConnectStrategy = require('passport-lds-connect').Strategy
   //, logger = require('morgan')
   , session = require('express-session')
@@ -11,11 +14,22 @@ var express = require('express')
 
 function create(server, host, port, publicDir) {
   var memdb = []
+    , ldsConnectProxy
     ;
 
   var LDS_CONNECT_ID = "55c7-test-bd03";
   var LDS_CONNECT_SECRET = "6b2fc4f5-test-8126-64e0-b9aa0ce9a50d";
   var APP_BASE_URL = "https://" + host + ":" + port;
+
+  function getAccessTokenFromSession(req) {
+    // flavor to the way you handle sessions in your app
+    return req.user && req.user.accessToken;
+  }
+  function getUserIdFromSession(req) {
+    return req.user && req.user.profile && req.user.profile.id;
+  }
+  ldsConnectProxy = require('lds-connect-proxy')
+    .create(getAccessTokenFromSession, getUserIdFromSession);
 
 
   // Passport session setup.
@@ -125,6 +139,11 @@ function create(server, host, port, publicDir) {
     req.logout();
     res.redirect('/');
   });
+
+  //
+  // the proxy must come *after* the authentication
+  //
+  ldsConnectProxy(app);
 
   app.use(express.static(publicDir));
 

@@ -13,6 +13,8 @@ var https = require('https')
   , publicDir = process.argv[3] || (__dirname + '/public')
   ;
 
+publicDir = path.join('.', publicDir);
+
 options = {
   key: fs.readFileSync(path.join(certsPath, 'my-server.key.pem'))
 , ca: [
