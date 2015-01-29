@@ -1,6 +1,6 @@
 {
   "name": "passport-lds-connect-examples-login",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "body-parser": ">= 1.4.3",
     "check-ip-address": "^1.0.0",
