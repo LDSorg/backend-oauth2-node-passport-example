@@ -10,10 +10,15 @@ var https = require('https')
   , options
   , certsPath = path.join(__dirname, 'certs', 'server')
   , caCertsPath = path.join(__dirname, 'certs', 'ca')
-  , publicDir = process.argv[3] || (__dirname + '/public')
+  , publicDir = process.argv[3] 
   ;
 
-publicDir = path.join('.', publicDir);
+if (!publicDir) {
+  publicDir = path.join(__dirname, 'public');
+}
+else if ('/' !== publicDir[0]) {
+  publicDir = path.join('.', publicDir);
+}
 
 options = {
   key: fs.readFileSync(path.join(certsPath, 'my-server.key.pem'))
