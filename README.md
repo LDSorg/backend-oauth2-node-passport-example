@@ -52,7 +52,7 @@ node ./serve.js
 
 **DO NOT USE 127.0.0.1 or localhost**
 
-<https://local.ldsconnect.org:8043>
+4. Go to <https://local.ldsconnect.org:8043>
 -----
 
 The development test keys are already installed. Once you've fired up the server navigate to <https://local.ldsconnect.org:8043>.
