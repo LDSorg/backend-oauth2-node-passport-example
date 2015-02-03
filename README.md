@@ -26,6 +26,8 @@ npm install
 2. Clone Frontend
 -----------------
 
+You need to clone the frontend 
+
 See [github.com/ldsorg](https://github.com/ldsorg?query=oauth2-) for a list of frontends examples / seed projects.
 
 ```bash
@@ -50,10 +52,18 @@ popd
 node ./serve.js
 ```
 
-**DO NOT USE 127.0.0.1 or localhost**
-
 4. Go to <https://local.ldsconnect.org:8043>
------
+----------
+
+**This domain points to YOUR computer**.
+
+**DO NOT USE 127.0.0.1 or localhost**.
+
+<https://local.ldsconnect.org:8043> uses a valid SSL certificate for
+HTTPS and points to 127.0.0.1.
+
+Even in development you should never be using insecure connections.
+Welcome to 2015. [Get used to it](https://letsencrypt.org)!
 
 The development test keys are already installed. Once you've fired up the server navigate to <https://local.ldsconnect.org:8043>.
 
@@ -63,31 +73,13 @@ because the way that many OAuth2 implementations validate domains requires
 having an actual domain. Also, you will be testing with **SSL on** so that
 your development environment mirrors your production environment.
 
-SSL Warnings
-============
+5. Login as dumbledore
+-----------
 
-This example uses **dummy SSL certificates** that are not recognized
-by your browser.
+You **cannot** login as a real lds.org user as a test application.
+If you try, you will get an error.
 
-There's nothing wrong with the example.
-**The browser security warnings are normal**.
-It's simply your browser letting
-you know that these certificates are not from a recognized vendor.
-
-![](https://i.imgur.com/d5mXvGa.png)
-
-![](https://i.imgur.com/RDjfEE5.png)
-
-![](https://i.imgur.com/xRnNSDQ.png)
-
-**When you deploy your real app** you should swap them with your own certificates.
-
-**TODO**: Link to video showing how to generate CSR, etc.
-
-**TODO**: During Summer 2015 Mozilla will make basic SSL certificates available
-to all web hosts for free be (see [Let's Encrypt](https://letsencrypt.org/)).
-Someone remind me to come back and update the instructions for the
-free certificates if this notice is still here in August.
+The login you must use for test applications is `dumbledore` with the passphrase `secret`.
 
 Credits
 ======
