@@ -68,7 +68,7 @@ Welcome to 2015. [Get used to it](https://letsencrypt.org)!
 The development test keys are already installed. Once you've fired up the server navigate to <https://local.ldsconnect.org:8043>.
 
 **Note**:
-It's important that you use `local.foobar3000.com` rather than `localhost`
+It's important that you use `local.ldsconnect.org` rather than `localhost`
 because the way that many OAuth2 implementations validate domains requires
 having an actual domain. Also, you will be testing with **SSL on** so that
 your development environment mirrors your production environment.
