@@ -1,6 +1,6 @@
 # passport-lds-connect-example
 
-A minimal example using passport lds-connect with io.js / node.js to get a user profile.
+A minimal example using passport lds-connect with io.js / node.js to get an lds.org user profile.
 
 If you don't have io.js or node.js already installed,
 [install it](https://github.com/coolaj86/iojs-install-script) and come back.
@@ -12,17 +12,48 @@ There's 0 config.
 
 You can start working with test user data immediately.
 
+1. Clone Backend
+----------------
+
 ```bash
 git clone git@github.com:LDSorg/passport-lds-connect-example.git
 
 pushd passport-lds-connect-example
-git submodule init
-git submodule update
 
 npm install
+```
 
+2. Clone Frontend
+-----------------
+
+See [github.com/ldsorg](https://github.com/ldsorg?query=oauth2-) for a list of frontends examples / seed projects.
+
+```bash
+# The jQuery Example
+git clone git@github.com:LDSorg/oauth2-jquery public
+```
+
+**Note**: If you use the AngularJS frontend you will also need to run `bower install`.
+
+```bash
+npm install -g bower
+
+pushd public
+bower install
+popd
+```
+
+3. Run Server
+-------------
+
+```bash
 node ./serve.js
 ```
+
+**DO NOT USE 127.0.0.1 or localhost**
+
+<https://local.ldsconnect.org:8043>
+-----
 
 The development test keys are already installed. Once you've fired up the server navigate to <https://local.ldsconnect.org:8043>.
 
