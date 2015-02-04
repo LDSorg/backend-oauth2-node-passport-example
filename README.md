@@ -5,10 +5,8 @@ A minimal example using passport lds-connect with io.js / node.js to get an lds.
 If you don't have io.js or node.js already installed,
 [install it](https://github.com/coolaj86/iojs-install-script) and come back.
 
-Install and Test Manually
-=========================
-
-There's 0 config.
+Zero-Config Install and Run
+================
 
 You can start working with test user data immediately.
 
