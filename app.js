@@ -3,36 +3,21 @@
 var express = require('express')
   , Passport = require('passport').Passport
   , passport = new Passport()
-  //, path = require('path')
-  , LdsConnectStrategy = require('passport-lds-connect').Strategy
   //, logger = require('morgan')
   , session = require('express-session')
   , bodyParser = require("body-parser")
   , cookieParser = require("cookie-parser")
   , methodOverride = require('method-override')
   , fbStrategy = require('./lib/facebook-connect')
+  , ldsStrategy = require('./lib/lds-connect')
   //, PromiseA = require('bluebird').Promise
   ;
 
 function create(server, host, port, publicDir) {
   var memdb = []
-    , ldsConnectProxy
     ;
 
-  var LDS_CONNECT_ID = "55c7-test-bd03";
-  var LDS_CONNECT_SECRET = "6b2fc4f5-test-8126-64e0-b9aa0ce9a50d";
   var APP_BASE_URL = "https://" + host + ":" + port;
-
-  function getAccessTokenFromSession(req) {
-    // flavor to the way you handle sessions in your app
-    return req.user && req.user.accessToken;
-  }
-  function getUserIdFromSession(req) {
-    return req.user && req.user.profile && req.user.profile.id;
-  }
-  ldsConnectProxy = require('lds-connect-proxy')
-    .create(getAccessTokenFromSession, getUserIdFromSession);
-
 
   // Passport session setup.
   //   To support persistent login sessions, Passport needs to be able to
@@ -51,31 +36,6 @@ function create(server, host, port, publicDir) {
     done(null, user);
   });
 
-
-  // Use the LdsConnectStrategy within Passport.
-  //   Strategies in Passport require a `verify` function, which accept
-  //   credentials (in this case, an accessToken, refreshToken, and LdsConnect
-  //   profile), and invoke a callback with a user object.
-  passport.use('lds-strategy-1', new LdsConnectStrategy({
-      clientID: LDS_CONNECT_ID
-    , clientSecret: LDS_CONNECT_SECRET
-    , callbackURL: APP_BASE_URL + "/auth/ldsconnect/callback"
-    , profileUrl: '/api/ldsconnect/me'
-    },
-    function (accessToken, refreshToken, profile, done) {
-      // asynchronous verification, for effect...
-      process.nextTick(function () {
-        
-        // To keep the example simple, the user's LdsConnect profile is returned to
-        // represent the logged-in user.  In a typical application, you would want
-        // to associate the LdsConnect account with a user record in your database,
-        // and return that user instead.
-        return done(null, { accessToken: accessToken, refreshToken: refreshToken, profile: profile });
-      });
-    }
-  ));
-
-
   var app = express();
 
   // configure Express
@@ -93,6 +53,7 @@ function create(server, host, port, publicDir) {
   app.use(passport.session());
 
   /*
+  // how you would render to jade/ejs if you needed to... but you won't
   app.get('/', function (req, res) {
     res.render('index', { user: req.user && req.user.profile });
   });
@@ -111,32 +72,6 @@ function create(server, host, port, publicDir) {
     res.send({ user: req.user && req.user.profile });
   });
 
-  // GET /auth/ldsconnect
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request.  The first step in LdsConnect authentication will involve
-  //   redirecting the user to ldsconnect.com.  After authorization, LdsConnect will
-  //   redirect the user back to this application at /auth/ldsconnect/callback
-  app.get('/auth/ldsconnect',
-    passport.authenticate('lds-strategy-1', { scope: ['ward.adults:name,photo:::'] }),
-    function (req, res) {
-      // The request will be redirected to LdsConnect for authentication,
-      // so this function will not be called.
-      res.end("[Error] this would never get called");
-    });
-
-  // GET /auth/ldsconnect/callback
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request.  If authentication fails, the user will be redirected back to the
-  //   login page.  Otherwise, the primary route function function will be called,
-  //   which, in this example, will redirect the user to the home page.
-  app.get('/auth/ldsconnect/callback', 
-    passport.authenticate('lds-strategy-1'/*, { failureRedirect: '/login' }*/),
-    function (req, res, next) {
-      req.url = '/oauth-close.html';
-      next();
-      //res.redirect('/');
-    });
-
   app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
@@ -148,10 +83,11 @@ function create(server, host, port, publicDir) {
   , url: APP_BASE_URL
   });
 
-  //
-  // the proxy must come *after* the authentication
-  //
-  ldsConnectProxy(app);
+  ldsStrategy.create(app, passport, {
+    id: "55c7-test-bd03"
+  , secret: "6b2fc4f5-test-8126-64e0-b9aa0ce9a50d"
+  , url: APP_BASE_URL
+  });
 
   app.use(express.static(publicDir));
 
