@@ -1,14 +1,16 @@
 'use strict';
 
 var express = require('express')
-  , passport = require('passport')
-  , path = require('path')
+  , Passport = require('passport').Passport
+  , passport = new Passport()
+  //, path = require('path')
   , LdsConnectStrategy = require('passport-lds-connect').Strategy
   //, logger = require('morgan')
   , session = require('express-session')
   , bodyParser = require("body-parser")
   , cookieParser = require("cookie-parser")
   , methodOverride = require('method-override')
+  , fbStrategy = require('./lib/facebook-connect')
   //, PromiseA = require('bluebird').Promise
   ;
 
@@ -138,6 +140,12 @@ function create(server, host, port, publicDir) {
   app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
+  });
+
+  fbStrategy.create(app, passport, {
+    id: '1592518370979179'
+  , secret: 'dd067af5becc203524507dba86eb3020'
+  , url: APP_BASE_URL
   });
 
   //

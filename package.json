@@ -12,6 +12,7 @@
     "method-override": ">= 2.0.2",
     "morgan": ">= 1.1.1",
     "passport": ">= 0.0.0",
+    "passport-facebook": "^1.0.3",
     "passport-lds-connect": "^1.1.0"
   }
 }
