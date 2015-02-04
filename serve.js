@@ -30,9 +30,11 @@ options = {
 // Recent version of node.js / io.js already have this intermediate in the bundled chain
 // adding it again would cause a failure.
 // See https://github.com/LDSorg/passport-lds-connect-example/issues/3
+/*
 , ca: [
     fs.readFileSync(path.join(caCertsPath, 'intermediate.crt.pem'))
   ]
+*/
 , requestCert: false
 , rejectUnauthorized: false
 };
