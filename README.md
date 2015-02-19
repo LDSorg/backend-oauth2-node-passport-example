@@ -21,7 +21,16 @@ pushd passport-lds-connect-example
 npm install
 ```
 
-2. Clone Frontend
+2. Clone SSL Certs
+------------------
+
+```bash
+# Clone the example HTTPS/SSL certificates into ./certs
+git clone git@github.com:LDSorg/local.ldsconnect.org-certificates.git ./certs
+tree -I .git ./certs
+```
+
+3. Clone Frontend
 -----------------
 
 You need to clone the frontend 
@@ -43,14 +52,14 @@ bower install
 popd
 ```
 
-3. Run Server
+4. Run Server
 -------------
 
 ```bash
 node ./serve.js
 ```
 
-4. Go to <https://local.ldsconnect.org:8043>
+5. Go to <https://local.ldsconnect.org:8043>
 ----------
 
 **This domain points to YOUR computer**.
@@ -71,7 +80,7 @@ because the way that many OAuth2 implementations validate domains requires
 having an actual domain. Also, you will be testing with **SSL on** so that
 your development environment mirrors your production environment.
 
-5. Login as dumbledore
+6. Login as dumbledore
 -----------
 
 You **cannot** login as a real lds.org user as a test application.
