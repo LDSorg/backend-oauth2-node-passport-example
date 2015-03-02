@@ -1,6 +1,6 @@
 {
   "name": "passport-lds-connect-examples-login",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "dependencies": {
     "body-parser": ">= 1.4.3",
     "check-ip-address": "^1.0.0",
@@ -13,6 +13,6 @@
     "morgan": ">= 1.1.1",
     "passport": ">= 0.0.0",
     "passport-facebook": "^1.0.3",
-    "passport-lds-connect": "^1.1.0"
+    "passport-lds-connect": "^1.2.0"
   }
 }
