@@ -14,7 +14,7 @@ You can start working with test user data immediately.
 ----------------
 
 ```bash
-git clone git@github.com:LDSorg/passport-lds-connect-example.git
+git clone https://github.com/LDSorg/backend-oauth2-node-passport-example.git
 
 pushd passport-lds-connect-example
 
@@ -26,7 +26,7 @@ npm install
 
 ```bash
 # Clone the example HTTPS/SSL certificates into ./certs
-git clone git@github.com:LDSorg/local.ldsconnect.org-certificates.git ./certs
+git clone https://github.com/LDSorg/local.ldsconnect.org-certificates.git ./certs
 tree -I .git ./certs
 ```
 
@@ -35,14 +35,16 @@ tree -I .git ./certs
 
 You need to clone the frontend 
 
-See [github.com/ldsorg](https://github.com/ldsorg?query=oauth2-) for a list of frontends examples / seed projects.
+See [github.com/ldsorg](https://github.com/ldsorg?query=frontend-) for a list of frontends examples / seed projects.
 
 ```bash
 # The jQuery Example
-git clone git@github.com:LDSorg/oauth2-jquery public
+git clone https://github.com/LDSorg/frontend-oauth2-jquery-example.git ./public
 ```
 
-**Note**: If you use the AngularJS frontend you will also need to run `bower install`.
+**Follow the Frontend instructions**
+
+**For Example**: If you use the **AngularJS frontend** you will also need to run `bower install`.
 
 ```bash
 npm install -g bower
