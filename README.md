@@ -14,9 +14,9 @@ You can start working with test user data immediately.
 ----------------
 
 ```bash
-git clone https://github.com/LDSorg/backend-oauth2-node-passport-example.git
+git clone https://github.com/LDSorg/backend-oauth2-node-passport-example.git ./oauth2-backend-example
 
-pushd passport-lds-connect-example
+pushd ./oauth2-backend-example
 
 npm install
 ```
