@@ -8,7 +8,6 @@
     "express": ">= 4.4.5",
     "express-session": ">= 1.6.1",
     "jade": "^1.9.1",
-    "lds-connect-proxy": "^0.6.1",
     "method-override": ">= 2.0.2",
     "morgan": ">= 1.1.1",
     "passport": ">= 0.0.0",
