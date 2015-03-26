@@ -1,6 +1,6 @@
 # passport-lds-connect-example
 
-A minimal example using passport-lds-io with io.js / node.js to get an lds.org user profile.
+A minimal example using passport-lds-io with io.js / node.js to get an lds.org user profile via LDS I/O.
 
 If you don't have io.js or node.js already installed,
 [install it](https://github.com/coolaj86/iojs-install-script) and come back.
