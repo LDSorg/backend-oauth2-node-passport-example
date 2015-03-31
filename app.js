@@ -9,7 +9,7 @@ var express = require('express')
   , cookieParser = require("cookie-parser")
   , methodOverride = require('method-override')
   , fbStrategy = require('./lib/facebook-connect')
-  , ldsStrategy = require('./lib/lds-connect')
+  , ldsStrategy = require('./lib/lds-io')
   //, PromiseA = require('bluebird').Promise
   ;
 
@@ -69,7 +69,7 @@ function create(server, host, port, publicDir) {
     res.send({ error: { message: "no session. please login" } });
   }
   app.get('/account.json', ensureAuthenticated, function (req, res) {
-    res.send({ user: req.user && req.user.profile });
+    res.send(req.user && req.user.profile);
   });
 
   app.get('/logout', function (req, res) {
@@ -84,8 +84,10 @@ function create(server, host, port, publicDir) {
   });
 
   ldsStrategy.create(app, passport, {
-    id: "55c7-test-bd03"
-  , secret: "6b2fc4f5-test-8126-64e0-b9aa0ce9a50d"
+    id: "TEST_ID_56f6f3551bd4faa420a3dd6e"
+  , secret: "TEST_SK_jtgoHAMKdIgoWSYd8E1gBIrW"
+  //  id: "55c7-test-bd03"
+  //, secret: "6b2fc4f5-test-8126-64e0-b9aa0ce9a50d"
   , url: APP_BASE_URL
   });
 
