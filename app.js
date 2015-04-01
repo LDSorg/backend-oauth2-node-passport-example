@@ -46,7 +46,8 @@ function create(server, host, port, publicDir) {
   app.use(bodyParser.json({ limit: 10 * 1024 * 1024 }));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(methodOverride());
-  app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+  app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+  //app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
   // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).
   app.use(passport.initialize());
