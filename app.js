@@ -70,7 +70,7 @@ function create(server, host, port, publicDir) {
     res.send({ error: { message: "no session. please login" } });
   }
   app.get('/account.json', ensureAuthenticated, function (req, res) {
-    res.send(req.user && req.user.profile);
+    res.send(req.user && req.user.profile || { error: { message: "profile not attached to req.user" } });
   });
 
   app.get('/logout', function (req, res) {
