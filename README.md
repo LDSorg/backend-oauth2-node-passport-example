@@ -1,14 +1,12 @@
-# oauth2-node
+# LDS API OAuth2 node.js example
 
-A minimal backend example using passport-oauth3 to get an lds.org user profile via [LDS I/O](https://lds.io).
-
-If you don't have io.js or node.js already installed,
-[install it](https://github.com/coolaj86/iojs-install-script) and come back.
+A minimal backend example using [passport-oauth3](https://github.com/OAuth3/node-passport-oauth3)
+to get an lds.org user profile via [LDS I/O](https://lds.io).
 
 This backend is part of the LDS API
 [Choose your own Adventure](https://github.com/LDSorg/choose-your-own-adventure) series.
 
-That means that you can couple this backend with any compatible frontend example and start
+That means that you can **couple this backend** with **any compatible frontend** example and start
 developing with Zero Configuration.
 
 Zero-Config Install and Run
@@ -27,6 +25,9 @@ You will be able to experiment at <https://local.ldsconnect.org:8043>
 
 The "Hard" Way
 ==============
+
+If you don't have io.js or node.js already installed,
+[install it](https://github.com/coolaj86/iojs-install-script) and come back.
 
 1. Clone Backend
 ----------------
