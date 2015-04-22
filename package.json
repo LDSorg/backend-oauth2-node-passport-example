@@ -13,6 +13,6 @@
     "morgan": ">= 1.1.1",
     "passport": "^0.2.1",
     "passport-facebook": "^1.0.3",
-    "passport-oauth3": "^1.0.1"
+    "passport-oauth3": "^1.0.3"
   }
 }
