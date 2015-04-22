@@ -63,11 +63,9 @@ See [github.com/ldsorg](https://github.com/ldsorg?query=frontend-) for a list of
 ```bash
 # The jQuery Example
 git clone https://github.com/LDSorg/frontend-oauth2-jquery-example.git ./frontend-oauth2-jquery
+rm -f public
+ln -s frontend-oauth2-jquery public
 ```
-
-**Follow the Frontend instructions**
-
-**For Example**: If you use the **AngularJS frontend** you will also need to run `bower install`.
 
 ```bash
 npm install -g bower
@@ -97,7 +95,8 @@ HTTPS and points to 127.0.0.1.
 Even in development you should never be using insecure connections.
 Welcome to 2015. [Get used to it](https://letsencrypt.org)!
 
-The development test keys are already installed. Once you've fired up the server navigate to <https://local.ldsconnect.org:8043>.
+The development test keys are already installed. Once you've fired up the
+server navigate to <https://local.ldsconnect.org:8043>.
 
 **Note**:
 It's important that you use `local.ldsconnect.org` rather than `localhost`
