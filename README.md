@@ -1,28 +1,46 @@
-# passport-lds-connect-example
+# oauth2-node
 
-A minimal example using passport-lds-io with io.js / node.js to get an lds.org user profile via LDS I/O.
+A minimal backend example using passport-oauth3 to get an lds.org user profile via [LDS I/O](https://lds.io).
 
 If you don't have io.js or node.js already installed,
 [install it](https://github.com/coolaj86/iojs-install-script) and come back.
 
+This backend is part of the LDS API
+[Choose your own Adventure](https://github.com/LDSorg/choose-your-own-adventure) series.
+
+That means that you can couple this backend with any compatible frontend example and start
+developing with Zero Configuration.
+
 Zero-Config Install and Run
 ================
+
+```bash
+curl -fsSL https://bit.ly/lds-api-adventure -o adventure.bash
+bash ./adventure.bash node angular
+```
+
+The "Hard" Way
+==============
 
 You can start working with test user data immediately.
 
 1. Clone Backend
 ----------------
 
-```bash
-git clone https://github.com/LDSorg/backend-oauth2-node-passport-example.git ./oauth2-backend-example
+See [github.com/ldsorg](https://github.com/ldsorg?query=backend-) for a list of backends examples / seed projects.
 
-pushd ./oauth2-backend-example
+```bash
+git clone https://github.com/LDSorg/backend-oauth2-node-passport-example.git ./backend-oauth2-node
+
+pushd ./backend-oauth2-node
 
 npm install
 ```
 
 2. Clone SSL Certs
 ------------------
+
+These certs are authentically valid for `local.ldsconnect.org`, which you are required to use during development.
 
 ```bash
 # Clone the example HTTPS/SSL certificates into ./certs
@@ -39,7 +57,7 @@ See [github.com/ldsorg](https://github.com/ldsorg?query=frontend-) for a list of
 
 ```bash
 # The jQuery Example
-git clone https://github.com/LDSorg/frontend-oauth2-jquery-example.git ./public
+git clone https://github.com/LDSorg/frontend-oauth2-jquery-example.git ./frontend-oauth2-jquery
 ```
 
 **Follow the Frontend instructions**
@@ -49,7 +67,7 @@ git clone https://github.com/LDSorg/frontend-oauth2-jquery-example.git ./public
 ```bash
 npm install -g bower
 
-pushd public
+pushd ./frontend-oauth2-jquery
 bower install
 popd
 ```
@@ -81,17 +99,3 @@ It's important that you use `local.ldsconnect.org` rather than `localhost`
 because the way that many OAuth2 implementations validate domains requires
 having an actual domain. Also, you will be testing with **SSL on** so that
 your development environment mirrors your production environment.
-
-6. Login as dumbledore
------------
-
-You **cannot** login as a real lds.org user as a test application.
-If you try, you will get an error.
-
-The login you must use for test applications is `dumbledore` with the passphrase `secret`.
-
-Credits
-======
-
-Adapted from Jared Hansen's
-[passport-facebook example](https://github.com/jaredhanson/passport-facebook/tree/master/examples/login).
