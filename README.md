@@ -14,15 +14,19 @@ developing with Zero Configuration.
 Zero-Config Install and Run
 ================
 
+You can start working with test user data immediately.
+
 ```bash
 curl -fsSL https://bit.ly/lds-api-adventure -o adventure.bash
 bash ./adventure.bash node angular
 ```
 
+No configuration changes are required and working test API keys are provided.
+
+You will be able to experiment at <https://local.ldsconnect.org:8043>
+
 The "Hard" Way
 ==============
-
-You can start working with test user data immediately.
 
 1. Clone Backend
 ----------------
