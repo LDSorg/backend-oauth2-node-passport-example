@@ -1,4 +1,7 @@
 .*.sw*
+public
+frontend-*
+certs
 
 # Logs
 logs
